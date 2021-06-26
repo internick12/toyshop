@@ -1,0 +1,18 @@
+const express = require('express');
+const app = express();
+const port = 8080;
+
+app.use( express.static('public/toyshop') );
+
+app.get('/holaMundo', (req, res) => {
+    res.send('Hello World desde su ruta');
+});
+
+
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/toyshop/index.html');
+});
+ 
+app.listen( port, ()=>{
+    console.log(`Apliacion corriendo en el puerto: ${ port }`);
+});
